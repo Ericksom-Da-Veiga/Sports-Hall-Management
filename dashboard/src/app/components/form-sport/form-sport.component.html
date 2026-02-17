@@ -1,22 +1,22 @@
 <div class="formulaire">
-    <h2>Ajouter un nouveau sport</h2>
+    <h2>Adicionar um novo desporto</h2>
     <div>
         <div>
           <div *ngIf="error" class="alert alert-danger" role="alert">{{error}}</div>
             <form class="row g-3 needs-validation" (ngSubmit)="saveSport()">
                 <div class="mb form-champ">
-                  <label for="validationCustom02" class="form-label">Nom</label>
+                  <label for="validationCustom02" class="form-label">Nome</label>
                   <input type="text" class="form-control" id="validationCustom02" [(ngModel)]="nom" name="nom" required>
                 </div>
                 <div class="mb form-champ">
-                  <label for="validationCustom02" class="form-label">Nombre de seance par semaine</label>
+                  <label for="validationCustom02" class="form-label">Número de sessões por semana</label>
                   <input type="number" class="form-control" id="validationCustom02" [(ngModel)]="nmbr_max_seance_semaine" name="nmbr_max_seance_semaine" required>
                 </div>
                 <div class="mb form-champ">
-                  <label for="validationCustom02" class="form-label">Prix</label>
+                  <label for="validationCustom02" class="form-label">Preço(mensal)</label>
                   <input type="number" class="form-control" id="validationCustom02" [(ngModel)]="prix" name="prix" required>
                 </div>
-                  <button type="submit" class="btn btn-primary" >Enregistrer</button>   
+                  <button type="submit" class="btn btn-primary" >Guardar</button>   
                   <div *ngIf="message" class="alert alert-success" role="alert">{{message}}</div>   
               </form>
         </div>

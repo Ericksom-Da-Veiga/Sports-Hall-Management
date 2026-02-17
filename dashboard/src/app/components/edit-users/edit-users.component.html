@@ -1,0 +1,48 @@
+<div class="formulaire" *ngIf="user">
+  <h2>Editar utilizador</h2>
+  <div>
+    <div *ngIf="error" class="alert alert-danger" role="alert">{{error}}</div>
+    <form class="row g-3 needs-validation" (ngSubmit)="updateUser()">
+      <div class="col-md-6 form-champ">
+        <label for="validationCustom01" class="form-label">NIF</label>
+        <input type="text" [(ngModel)]="user.cin" name="cin" class="form-control" id="validationCustom01" required>
+      </div>
+
+      <div class="col-md-6 form-champ">
+        <label for="validationCustom02" class="form-label">Email</label>
+        <input type="email" [(ngModel)]="user.mail" name="mail" class="form-control" id="validationCustom02" required>
+      </div>
+
+      <div class="col-md-6 form-champ">
+        <label for="validationCustom03" class="form-label">Password</label>
+        <input type="password" [(ngModel)]="user.password" name="password" class="form-control" id="validationCustom03" required>
+      </div>
+
+      <div class="col-md-6 form-champ">
+        <label for="validationCustom04" class="form-label">Papel</label>
+        <select [(ngModel)]="user.role" name="role" class="form-control" id="validationCustom04" required>
+          <option value="">Selecione um papel</option>
+          <option *ngFor="let r of roles" [value]="r">{{r}}</option>
+        </select>
+      </div>
+
+      <div class="col-md-6 form-champ">
+        <label for="validationCustom05" class="form-label">Nome</label>
+        <input type="text" [(ngModel)]="user.nom" name="nom" class="form-control" id="validationCustom05" required>
+      </div>
+
+      <div class="col-md-6 form-champ">
+        <label for="validationCustom06" class="form-label">Apelido</label>
+        <input type="text" [(ngModel)]="user.prenom" name="prenom" class="form-control" id="validationCustom06" required>
+      </div>
+
+      <div class="col-md-6 form-champ">
+        <label for="validationCustom07" class="form-label">Telefone</label>
+        <input type="text" [(ngModel)]="user.telephone" name="telephone" class="form-control" id="validationCustom07" required>
+      </div>
+
+      <button type="submit" class="btn btn-success">Guardar</button>
+      <div *ngIf="message" class="alert alert-success" role="alert">{{message}}</div>
+    </form>
+  </div>
+</div>

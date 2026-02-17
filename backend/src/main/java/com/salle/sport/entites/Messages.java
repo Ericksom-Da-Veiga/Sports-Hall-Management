@@ -42,9 +42,9 @@ public class Messages {
 
     private MessageStatus status = SENT; //(READ / SENT);
 
-    public Messages(Long sender_id, Long receiver_id, String content){
-        this.senderId = sender_id;
-        this.receiverId = receiver_id;
+    public Messages(Long senderId, Long receiverId, String content){
+        this.senderId = senderId;
+        this.receiverId = receiverId;
         this.content = content;
         timestamp = LocalDateTime.now();
     }

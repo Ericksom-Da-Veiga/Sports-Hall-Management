@@ -1,1 +1,84 @@
-<p>chat works!</p>
+<div class="chat-container">
+  <!-- Cabeçalho -->
+  <div class="chat-header">
+    <div class="header-left">
+      <h2>Mensagens</h2>
+      <div class="connection-status" [class.connected]="isConnected" [class.disconnected]="!isConnected">
+        <span class="status-dot"></span>
+        <span class="status-text">{{ isConnected ? 'Conectado' : 'Desconectado' }}</span>
+      </div>
+    </div>
+    <div class="user-selector">
+      <label for="receiver">Conversar com:</label>
+      <select 
+        id="receiver" 
+        [(ngModel)]="selectedUserId" 
+        (change)="onUserChange()"
+        [disabled]="users.length === 0"
+        class="user-select"
+      >
+        <option *ngIf="users.length === 0" [value]="null">
+          Nenhum Utilizador disponível
+        </option>
+        <option *ngFor="let user of users" [value]="user.id">
+          {{ user.nom }} {{ user.prenom }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Mensagem de erro -->
+  <div *ngIf="errorMessage" class="error-message">
+    <span>{{ errorMessage }}</span>
+    <button (click)="clearError()" class="close-btn">&times;</button>
+  </div>
+
+  <!-- Histórico de mensagens -->
+  <div #messagesContainer class="messages-container">
+    <div *ngIf="isLoading && messages.length === 0" class="loading">
+      <p>Carregando mensagens...</p>
+    </div>
+
+    <div *ngIf="messages.length === 0 && !isLoading" class="empty-state">
+      <p>Nenhuma mensagem ainda. Comece a conversa!</p>
+    </div>
+
+    <div *ngFor="let msg of messages" 
+         [class.message]="true" 
+         [class.my-message]="isMyMessage(msg.senderId)"
+         [class.other-message]="!isMyMessage(msg.senderId)">
+      <div class="message-content">
+        <div class="sender-name">
+          {{ isMyMessage(msg.senderId) ? 'Você' : selectedUserName }}
+        </div>
+        <p class="message-text">{{ msg.content }}</p>
+        <div class="message-meta">
+          <span class="message-time">{{ formatTime(msg.timestamp) }}</span>
+          <span *ngIf="isMyMessage(msg.senderId)" class="message-status" [class.read]="msg.read">
+            {{ msg.status || 'ENVIADO' }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Input de mensagem -->
+  <div class="chat-input-container">
+    <input 
+      type="text" 
+      [(ngModel)]="newMessage" 
+      (keyup.enter)="sendMessage()"
+      placeholder="Digite sua mensagem aqui..."
+      class="message-input"
+      [disabled]="!selectedUserId || isLoading"
+    />
+    <button 
+      (click)="sendMessage()" 
+      class="send-button"
+      [disabled]="!newMessage.trim() || !selectedUserId || isLoading"
+      [title]="isConnected ? 'Enviar via WebSocket' : 'Enviar via HTTP'"
+    >
+      {{ isLoading ? '⏳' : '➤' }}
+    </button>
+  </div>
+</div>

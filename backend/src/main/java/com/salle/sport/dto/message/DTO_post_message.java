@@ -9,6 +9,6 @@ public record DTO_post_message(
         @NotNull
         Long receiverId,
         @NotBlank
-        String message
+        String content
 ) {
 }

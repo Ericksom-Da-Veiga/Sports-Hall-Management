@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 export interface UserResponse{
-  id: Number;
+  id: number;
   cin: string;
   mail: string;
   nom: string;

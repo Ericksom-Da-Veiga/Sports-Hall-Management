@@ -1,5 +1,5 @@
 <div class="formulaire">
-    <h2>Ajouter un nouveau coach</h2>
+    <h2>Adicionar um novo treinador</h2>
     <div>
       <div *ngIf="error" class="alert alert-danger" role="alert">{{error}}</div>
         <form class="row g-3 needs-validation" (ngSubmit)="saveCoach()">
@@ -28,25 +28,25 @@
                 <input type="password" [(ngModel)]="password" name="password" class="form-control" id="validationCustom03" required>
               </div>
               <div class="mb form-champ">
-                <label for="validationCustom05" class="form-label">Date Debut</label>
+                <label for="validationCustom05" class="form-label">Data de Início</label>
                 <input type="date" [(ngModel)]="date_entree" name="date_entree" class="form-control" id="validationCustom05" required>
               </div>
               <div class="mb form-champ">
-                <label for="validationCustom05" class="form-label">Telephone</label>
+                <label for="validationCustom05" class="form-label">Telefone</label>
                 <input type="number" [(ngModel)]="telephone" name="telephone" class="form-control" id="validationCustom05" required>
               </div>
               <div class="mb form-champ">
-                <label for="validationCustom05" class="form-label">Adresse</label>
+                <label for="validationCustom05" class="form-label">Endereço</label>
                 <input type="text" [(ngModel)]="adress" name="adress" class="form-control" id="validationCustom05" required>
               </div>
               <div class="mb form-champ">
-                <label for="validationCustom05" class="form-label">Sports</label>
+                <label for="validationCustom05" class="form-label">Desportos</label>
                 <select  class="form-select" id="validationCustom04" required (change)="onSportChange($event)">
-                  <option selected disabled>Choisir sport</option>
+                  <option selected disabled>Escolher desporto</option>
                   <option *ngFor="let sport of sports" [(ngModel)]="idsport" name="idsport" [value]="sport.id">{{sport.nom}}</option>
                 </select>
               </div>
-              <button type="submit" class="btn btn-success">Enregistrer</button>
+              <button type="submit" class="btn btn-success">Guardar</button>
               <div *ngIf="message" class="alert alert-success" role="alert">{{message}}</div>
           </form>
     </div>

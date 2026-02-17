@@ -1,5 +1,5 @@
 <div class="formulaire">
-    <h2>Ajouter un nouveau utilisateur</h2>
+    <h2>Adicionar um novo utilizador</h2>
     <div>
       <div *ngIf="error" class="alert alert-danger" role="alert">{{error}}</div>
         <form class="row g-3 needs-validation" (ngSubmit)="saveUser()">
@@ -8,12 +8,12 @@
               <input type="text" [(ngModel)]="cin" name="cin" class="form-control" id="validationCustom01" value="" required>
             </div>
             <div class="mb form-champ">
-              <label for="validationCustom02" class="form-label">Nom</label>
+              <label for="validationCustom02" class="form-label">Nome</label>
               <input type="text" [(ngModel)]="nom" name="nom" class="form-control" id="validationCustom02" value="" required>
             </div>
             
             <div class="mb form-champ">
-              <label for="validationCustom03" class="form-label">Prenom</label>
+              <label for="validationCustom03" class="form-label">Apelido</label>
               <input type="text" [(ngModel)]="prenom" name="prenom" class="form-control" id="validationCustom03" required>
             </div>
             <div class="mb form-champ">
@@ -28,19 +28,19 @@
                 <input type="password" [(ngModel)]="password" name="password" class="form-control" id="validationCustom03" required>
               </div>
               <div class="mb form-champ">
-                <label for="validationCustom05" class="form-label">Telephone</label>
+                <label for="validationCustom05" class="form-label">Telefone</label>
                 <input type="number" [(ngModel)]="telephone" name="telephone" class="form-control" id="validationCustom05" required>
               </div>
 
               <div class="mb form-champ">
-                <label for="validationCustom05" class="form-label">Role</label>
+                <label for="validationCustom05" class="form-label">Cargo</label>
                 <select  class="form-select" id="validationCustom04" required (change)="onRoleChange($event)">
-                  <option selected disabled>Choisir role</option>
+                  <option selected disabled>Escolher cargo</option>
                   <option name="role">Admin</option>
                   <option name="role">SuperAdmin</option>
                 </select>
               </div>
-              <button type="submit" class="btn btn-success">Enregistrer</button>
+              <button type="submit" class="btn btn-success">Guardar</button>
               <div *ngIf="message" class="alert alert-success" role="alert">{{message}}</div>
           </form>
     </div>

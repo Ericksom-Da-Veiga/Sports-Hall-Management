@@ -34,11 +34,12 @@ public class SecurityConfiguration {
             .authorizeHttpRequests(authorize ->
                 authorize
                     //Login
-                    .requestMatchers(HttpMethod.POST, "/login")
-                    .permitAll()
+                    .requestMatchers(HttpMethod.POST, "/login").permitAll()
+                    //websocket handshake and STOMP endpoints should be reachable (filter will still process them)
+                    .requestMatchers("/ws/**").permitAll()
+                    .requestMatchers("/app/**", "/topic/**", "/queue/**").permitAll()
                     //tous les autres request
-                    .anyRequest()
-                    .authenticated()
+                    .anyRequest().authenticated()
             )
             //para adicionar o nosso filter(securityFilter) a ser usado antes do filter do spring
             .addFilterBefore(

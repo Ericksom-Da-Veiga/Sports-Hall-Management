@@ -2,37 +2,37 @@
     <div class="card">
         <div class="card-header">
           <h3>
-            Liste des paiements réalisés
-            <a routerLink="/payement/add" type="button" class="btn btn-success float-end">Ajouter</a>
+            Lista de pagamentos realizados
+            <a routerLink="/payement/add" type="button" class="btn btn-success float-end">Adicionar</a>
           </h3>
           <div *ngIf="message" class="alert alert-success" role="alert">{{message}}</div>
         </div>
         <div class="card-body">
-          <button type="button" class="btn btn-secondary float-end" (click)="exportToCSV()">Exporter en CSV</button>
+          <button type="button" class="btn btn-secondary float-end" (click)="exportToCSV()">Exportar para CSV</button>
           <div class="row mb-3">
             <div class="col-md-4 float-end">
-              <label for="startDate">Date debut:</label>
+              <label for="startDate">Data início:</label>
               <input type="date" id="startDate" [(ngModel)]="startDate" class="form-control">
             </div>
             <div class="col-md-4">
-              <label for="endDate">Date Fin:</label>
+              <label for="endDate">Data Fim:</label>
               <input type="date" id="endDate" [(ngModel)]="endDate" class="form-control">
             </div>
             <div class="col-md-4 d-flex align-items-end">
-              <button class="btn btn-success me-2" (click)="applyFilter()">Chercher</button>
-              <button class="btn btn-secondary" (click)="clearFilter()">Vider</button>
+              <button class="btn btn-success me-2" (click)="applyFilter()">Pesquisar</button>
+              <button class="btn btn-secondary" (click)="clearFilter()">Limpar</button>
             </div>
           </div>
           
           <table class="table tab-pane">
             <thead>
                 <tr>
-                    <th (click)="sort('cin_adherant')">CIN</th>
-                    <th (click)="sort('nom')">Nom</th>
-                    <th (click)="sort('prenom')">Prenom</th>
-                    <th (click)="sort('date_payement')">Date payement</th>
-                    <th (click)="sort('prix')">Prix</th>
-                    <th>Delete</th>
+                    <th (click)="sort('cin_adherant')">NIF</th>
+                    <th (click)="sort('nom')">Nome</th>
+                    <th (click)="sort('prenom')">Apelido</th>
+                    <th (click)="sort('date_payement')">Data do pagamento</th>
+                    <th (click)="sort('prix')">Preço</th>
+                    <th>Eliminar</th>
                 </tr>
               </thead>
               <tbody>

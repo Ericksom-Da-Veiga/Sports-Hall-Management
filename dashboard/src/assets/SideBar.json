@@ -3,49 +3,49 @@
         "id": 1,
         "class":"active",
         "icon":"bx fa-solid fa-table-columns",
-        "name":"Tableau de bord",
+        "name":"Dashboard",
         "routerLink":"/dashboard"
     },
     {
         "id": 2,
         "class":"",
         "icon":"bx fa-solid fa-address-card",
-        "name":"Adherant",
+        "name":"Inscritos",
         "routerLink":"/adherant"
     },
     {
         "id": 3,
         "class":"",
         "icon":"bx fa-solid fa-file-signature",
-        "name":"Abonnement",
+        "name":"Assinaturas",
         "routerLink":"/abonnement"
     },
     {
         "id": 4,
         "class":"",
         "icon":"bx fa-solid fa-dumbbell",
-        "name":"Sports",
+        "name":"Desportos",
         "routerLink":"/sports"
     },
     {
         "id": 5,
         "class":"",
         "icon":"bx fa-regular fa-credit-card",
-        "name":"Payement",
+        "name":"Pagamentos",
         "routerLink":"/payement"
     },
     {
         "id": 6,
         "class":"",
         "icon":"bx fa-solid fa-user-tie",
-        "name":"Coach",
+        "name":"Treinadores",
         "routerLink":"/monitor"
     },
     {
         "id": 7,
         "class":"",
-        "icon":"bx fa-solid fa-user-gear",
-        "name":"Paramètres",
-        "routerLink":"/settings"
+        "icon":"bx fa-solid fa-users",
+        "name":"Utilizadores",
+        "routerLink":"/users"
     }
 ]

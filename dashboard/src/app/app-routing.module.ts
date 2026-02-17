@@ -24,6 +24,9 @@ import { AbonnementDetailComponent } from './view/abonnement-detail/abonnement-d
 import { AuthGardService } from './services/auth-gard/auth-gard.service';
 import { SettingsAddComponent } from './view/settings-add/settings-add.component';
 import { SettingsEditComponent } from './view/settings-edit/settings-edit.component';
+import { UsersComponent } from './view/users/users.component';
+import { UsersAddComponent } from './view/users-add/users-add.component';
+import { UsersEditComponent } from './view/users-edit/users-edit.component';
 
 const routes: Routes = [
   {path: "dashboard", component: DashboardComponent, title: "Dashboard", canActivate: [AuthGardService]},
@@ -49,6 +52,10 @@ const routes: Routes = [
   {path: "monitor", component: MonitorsComponent,title: "Monitor", canActivate: [AuthGardService]},
   {path: "monitor/add", component: MonitorsAddsComponent,title: "Ajouter Monitor", canActivate: [AuthGardService]},
   {path: "monitor/:id/edit", component: MonitorsEditComponent,title: "Edit Monitor", canActivate: [AuthGardService]},
+
+  {path: "users", component: UsersComponent, title: "Utilizadores", canActivate: [AuthGardService]},
+  {path: "users/add", component: UsersAddComponent, title: "Adicionar Utilizador", canActivate: [AuthGardService]},
+  {path: "users/:id/edit", component: UsersEditComponent, title: "Modificar Utilizador", canActivate: [AuthGardService]},
 
   {path: "statistique", component: StatistiquesComponent, title: "Statistiques", canActivate: [AuthGardService]},
   {path: "login", component: LoginComponent,title: "Login"},

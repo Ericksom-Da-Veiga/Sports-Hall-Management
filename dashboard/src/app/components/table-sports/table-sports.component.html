@@ -2,22 +2,22 @@
   <div class="card">
     <div class="card-header">
       <h2>
-        Liste des sports
-        <a routerLink="/sports/add"  class="btn btn-success float-end">Ajouter</a>
+        Lista de desportos
+        <a routerLink="/sports/add"  class="btn btn-success float-end">Adicionar</a>
       </h2>
-      <input class="form-control me-2" [(ngModel)]="data" name="data" type="search" placeholder="Saisir le nom" (input)="chercherSport()">
+      <input class="form-control me-2" [(ngModel)]="data" name="data" type="search" placeholder="Introduzir o nome" (input)="chercherSport()">
     </div>
     <div class="card-body">
-      <button type="button" class="btn btn-secondary float-end" (click)="exportToCSV()">Exporter en CSV</button>
+      <button type="button" class="btn btn-secondary float-end" (click)="exportToCSV()">Exportar para CSV</button>
       <div *ngIf="message" class="alert alert-success" role="alert">{{message}}</div>
       <table class="table table-pane">
         <thead>
             <tr>
-                <th>Reference</th>
-                <th>Nom</th>
-                <th>Nombre max de seance</th>
-                <th>Modifier</th>
-                <th>Delete</th>
+                <th>Referência</th>
+                <th>Nome</th>
+                <th>Número máximo de sessões</th>
+                <th>Modificar</th>
+                <th>Eliminar</th>
             </tr>
         </thead>
         <tbody>

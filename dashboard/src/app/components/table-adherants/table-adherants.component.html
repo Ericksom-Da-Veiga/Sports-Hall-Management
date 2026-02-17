@@ -2,28 +2,28 @@
   <div class="card">
       <div class="card-header">
         <h2>
-            Liste des adhérents
-            <a routerLink="/adherant/add" class="btn btn-success float-end">Ajouter</a>
+            Lista de inscritos
+            <a routerLink="/adherant/add" class="btn btn-success float-end">Adicionar</a>
         </h2> 
-          <input class="form-control me-2" [(ngModel)]="data" name="data" type="search" placeholder="Saisir le CIN ou nom" (input)="chercherAdherant()">
+          <input class="form-control me-2" [(ngModel)]="data" name="data" type="search" placeholder="Introduzir o NIF ou nome" (input)="chercherAdherant()">
       </div>
       <div class="card-body">
-        <button type="button" class="btn btn-secondary float-end" (click)="exportToCSV()" >Exporter en CSV</button>
+        <button type="button" class="btn btn-secondary float-end" (click)="exportToCSV()" >Exportar para CSV</button>
 
         <div *ngIf="message" class="alert alert-success" role="alert">{{message}}</div>
         <table class="table table-pane">
           <thead>
               <tr>
                   <th>ID</th>
-                  <th>CIN</th>
-                  <th>Nom</th>
-                  <th>Prenom</th>
-                  <th>adress</th>
-                  <th>Telephone</th>
-                  <th>E-mail</th>
-                  <th>Ville</th>
-                  <th>Modifier</th>
-                  <th>Action</th>
+                  <th>NIF</th>
+                  <th>Nome</th>
+                  <th>Apelido</th>
+                  <th>Endereço</th>
+                  <th>Telefone</th>
+                  <th>Email</th>
+                  <th>Cidade</th>
+                  <th>Modificar</th>
+                  <th>Ação</th>
               </tr>
             </thead>
             <tbody>
@@ -39,7 +39,7 @@
                   <td><a routerLink="/adherant/{{person.id}}/edit" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a></td>
                   <td>
                     <button *ngIf="person.active === 1" (click)="deleteAdherant($event, person.id)" class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button>
-                    <button *ngIf="person.active === 0" (click)="ActiverAdherant($event, person.id)" class="btn btn-success">Activer</button>
+                    <button *ngIf="person.active === 0" (click)="ActiverAdherant($event, person.id)" class="btn btn-success">Ativar</button>
                   </td>
               </tr>
             </tbody>

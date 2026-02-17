@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
@@ -55,7 +58,12 @@ import { SettingsEditComponent } from './view/settings-edit/settings-edit.compon
 import { SettingsAddComponent } from './view/settings-add/settings-add.component';
 import { EditSettingsComponent } from './components/edit-settings/edit-settings.component';
 import { FormSettingsComponent } from './components/form-settings/form-settings.component';
-import { ChatComponent } from './components/chat/chat/chat.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { UsersComponent } from './view/users/users.component';
+import { UsersAddComponent } from './view/users-add/users-add.component';
+import { UsersEditComponent } from './view/users-edit/users-edit.component';
+import { FormUsersComponent } from './components/form-users/form-users.component';
+import { EditUsersComponent } from './components/edit-users/edit-users.component';
 
 
 @NgModule({
@@ -107,7 +115,12 @@ import { ChatComponent } from './components/chat/chat/chat.component';
     SettingsAddComponent,
     EditSettingsComponent,
     FormSettingsComponent,
-    ChatComponent
+    ChatComponent,
+    UsersComponent,
+    UsersAddComponent,
+    UsersEditComponent,
+    FormUsersComponent,
+    EditUsersComponent
   ],
   imports: [
     BrowserModule,
@@ -117,6 +130,9 @@ import { ChatComponent } from './components/chat/chat/chat.component';
     FormsModule,
     NgxPaginationModule,
     NgMultiSelectDropDownModule.forRoot(),
+    MatIconModule,
+    MatButtonModule,
+    MatDialogModule,
   ],
   providers: [
     {

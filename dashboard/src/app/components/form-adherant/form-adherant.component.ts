@@ -53,7 +53,7 @@ export class FormAdherantComponent {
       next: (res : any) => {
         if(res.data != null){
           this.error = "";
-          this.message = res.message;
+          this.message = "Inscrição bem sucedida";
           this.cin ="";
           this.nom = "";
           this.prenom = "";
@@ -72,7 +72,7 @@ export class FormAdherantComponent {
         }
       },error:(err: any) => {
           this.message = "";
-          this.error = "Voulez verifier les informations saisi";
+          this.error = "Verifique as informações inseridas e tente novamente";
         },
     });
   }

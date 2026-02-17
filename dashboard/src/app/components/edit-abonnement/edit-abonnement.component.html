@@ -1,11 +1,11 @@
 <div class="formulaire">
-    <h2>Modifier les informations de l'abonnement</h2>
+    <h2>Modificar as informações da assinatura</h2>
     <div>
         <form class="row g-3 needs-validation" (ngSubmit)="updateAbonnement()" >         
           <div class="mb form-champ">
-            <label for="validationCustom05" class="form-label">Sports</label>
+            <label for="validationCustom05" class="form-label">Desportos</label>
             <ng-multiselect-dropdown 
-              [placeholder]="'Choisir sport'" 
+              [placeholder]="'Escolher desporto'" 
               [data]="Sports" 
               [(ngModel)]="selectedSports" 
               [settings]="dropdownSettings"
@@ -17,18 +17,18 @@
           </ng-multiselect-dropdown>
           </div>
             <div class="mb form-champ">
-              <label for="validationCustom05" class="form-label">Date debut</label>
+              <label for="validationCustom05" class="form-label">Data de início</label>
               <input type="date" [(ngModel)]="AbonnementResponse.date_debut" name="date_debut"  class="form-control" id="validationCustom05" required>
             </div>
             <div class="mb form-champ">
-              <label for="validationCustom05" class="form-label">Duree</label>
+              <label for="validationCustom05" class="form-label">Duração</label>
               <input type="number" [(ngModel)]="duree" name="duree"  class="form-control" id="validationCustom05" required (input)="calculerPrix()">
             </div>
             <div class="mb form-champ">
-              <label for="validationCustom05" class="form-label">Prix</label>
+              <label for="validationCustom05" class="form-label">Preço</label>
               <input type="number" disabled [(ngModel)]="prix_totale" name="prix_totale"  class="form-control" id="validationCustom05" required>
             </div>
-            <button type="submit"  class="btn btn-success">Enregistrer</button>      
+            <button type="submit"  class="btn btn-success">Guardar</button>      
           </form>
     </div>
     <div *ngIf="message" class="alert alert-success" role="alert">{{message}}</div>

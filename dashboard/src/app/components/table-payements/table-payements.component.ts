@@ -37,19 +37,32 @@ export class TablePayementsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPayements();
-    this.updatePrixTotalParPage();
   }
 
   onPageChange(pageNumber: number) {
     this.currentPage = pageNumber;
+    this.updatePrixTotalParPage();
   }
 
   getPayements() {
     this.payementService.getListPayements().subscribe((res: any) => {
+      console.log('Response completo da API:', res);
+      console.log('res.data:', res.data);
+      
       this.payement_list = res.data;
+      console.log('payement_list após atribuição:', this.payement_list);
+      console.log('Número de pagamentos:', this.payement_list.length);
+      
+      if (!this.payement_list || this.payement_list.length === 0) {
+        console.warn('Lista de pagamentos está vazia!');
+        this.filteredPayementList = [];
+        return;
+      }
+      
       const payementObservables = this.payement_list.map((payement: payementResponse) => 
         this.adherantService.GetAdherantByCIN(payement.cin_adherant).pipe(
           map((res: any) => {
+            console.log('Dados do aderente para CIN', payement.cin_adherant, ':', res);
             payement.nom = res.data[0].nom;
             payement.prenom = res.data[0].prenom;
             payement.prix = payement.quant_recu - payement.rendu;
@@ -58,10 +71,20 @@ export class TablePayementsComponent implements OnInit {
         )
       );
 
+      console.log('Número de observáveis criados:', payementObservables.length);
+      
       forkJoin(payementObservables).subscribe(updatedPayements => {
+        console.log('forkJoin completado com:', updatedPayements);
         this.payement_list = updatedPayements;
         this.filteredPayementList = this.payement_list;
+        this.updatePrixTotalParPage();
+        console.log('filteredPayementList atualizada:', this.filteredPayementList);
+      }, (error) => {
+        console.error('Erro no forkJoin:', error);
       });
+    }, (error) => {
+      console.error('Erro ao carregar pagamentos:', error);
+      this.message = 'Erro ao carregar pagamentos';
     });
   }
 
@@ -112,10 +135,10 @@ export class TablePayementsComponent implements OnInit {
   
 
   deletePayement($event: MouseEvent,id: number) {
-    if(confirm('Vous etez sur de supprimer cette adherant?'))
+    if(confirm('Tem certeza de que deseja excluir este pagamento?'))
       {
         this.payementService.deletePayements(id).subscribe((resp:any)=>{
-          this.message = "Payement supprimè"
+          this.message = "Pagamento excluído com sucesso"
           setTimeout(() => window.location.reload(), 2000);
         })
       }
@@ -125,7 +148,7 @@ export class TablePayementsComponent implements OnInit {
       this.totalPrixPorPagina = [];
     
       // Obter os índices inicial e final dos itens na página atual
-      const startIndex = this.currentPage * this.itemsPerPage;
+      const startIndex = (this.currentPage - 1) * this.itemsPerPage;
       const endIndex = startIndex + this.itemsPerPage;
     
       // Iterar pelos itens da página atual e calcular a soma de prix
@@ -143,16 +166,16 @@ export class TablePayementsComponent implements OnInit {
         quoteStrings: '"',
         decimalseparator: '.',
         showLabels: true, 
-        headers: ["Date de Paiement", "CIN", "Nom", "Prénom", "Montant Reçu", "Rendu"]
+        headers: ["Data de Pagamento", "NIF", "Nom", "Prénom", "Montant Reçu", "Rendu"]
       };
     
       const data = this.filteredPayementList.map(payement => ({
-        "Date de Paiement": payement.date_payement,
-        "CIN": payement.cin_adherant,
-        "Nom": payement.nom,
-        "Prénom": payement.prenom,
-        "Montant Reçu": payement.quant_recu,
-        "Rendu": payement.rendu
+        "Data de Pagamento": payement.date_payement,
+        "NIF": payement.cin_adherant,
+        "Nome": payement.nom,
+        "Apelido": payement.prenom,
+        "Montante Recebido": payement.quant_recu,
+        "Troco": payement.rendu
       }));
     
       // Criando o conteúdo CSV

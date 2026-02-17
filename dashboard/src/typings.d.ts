@@ -1,3 +1,5 @@
+declare module 'sockjs-client';
+
 declare module 'jspdf-autotable' {
     import jsPDF from 'jspdf';
     export interface jsPDFDocument extends jsPDF {

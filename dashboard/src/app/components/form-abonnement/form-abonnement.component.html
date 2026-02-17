@@ -1,16 +1,16 @@
 <div class="formulaire">
-    <h2>Ajouter un nouvel abonnement</h2>
+    <h2>Adicionar uma nova assinatura</h2>
     <div >
       <div *ngIf="error" class="alert alert-danger" role="alert">{{error}}</div>
         <form class="row g-3 needs-validation" (ngSubmit)="saveAbonnement()">
             <div class="mb form-champ">
-              <label for="validationCustom01" class="form-label">CIN du adherant</label>
+              <label for="validationCustom01" class="form-label">NIF do inscrito</label>
               <input type="text" [(ngModel)]="cin" name="cin" class="form-control" id="validationCustom01" value="" required>
             </div> 
             <div class="mb form-champ">
-              <label for="validationCustom05" class="form-label">Sports</label>
+              <label for="validationCustom05" class="form-label">Desportos</label>
               <ng-multiselect-dropdown 
-                [placeholder]="'Choisir sport'" 
+                [placeholder]="'Escolher desporto'" 
                 [data]="Sports" 
                 [(ngModel)]="selectedSports" 
                 [settings]="dropdownSettings"
@@ -22,14 +22,14 @@
             </ng-multiselect-dropdown>
             </div>
             <div class="mb form-champ">
-              <label for="validationCustom05" class="form-label">Duree(en mois)</label>
+              <label for="validationCustom05" class="form-label">Duração (em meses)</label>
               <input type="number" [(ngModel)]="duree" name="duree" class="form-control" id="validationCustom05" required (input)="DonnerPrixFinale()">
             </div>
             <div class="mb form-champ">
-              <label for="validationCustom05" class="form-label">Prix</label>
+              <label for="validationCustom05" class="form-label">Preço(€)</label>
               <input type="number" [(ngModel)]="prix_totale" name="prix_totale" class="form-control" id="validationCustom05" disabled="" required>
             </div>
-            <button type="submit" class="btn btn-success">Enregistrer</button>      
+            <button type="submit" class="btn btn-success">Guardar</button>      
             <div *ngIf="message" class="alert alert-success" role="alert">{{message}}</div>
           </form>
     </div>

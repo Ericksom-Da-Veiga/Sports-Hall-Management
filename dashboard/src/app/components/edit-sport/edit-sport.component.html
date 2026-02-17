@@ -1,21 +1,21 @@
 <div class="formulaire">
-    <h2>Modifier les informations du sport</h2>
+    <h2>Modificar as informações do desporto</h2>
     <div>
         <div class="formulaire">
             <form class="row g-3 needs-validation" (ngSubmit)="updateSport()">
                 <div class="col-md-4 form-champ">
-                  <label for="validationCustom02" class="form-label">Nom</label>
+                  <label for="validationCustom02" class="form-label">Nome</label>
                   <input type="text" class="form-control" id="validationCustom02" [(ngModel)]="sport.nom" name="nom" required>
                 </div>
                 <div class="col-md-4 form-champ">
-                  <label for="validationCustom02" class="form-label">Nombre de seance par semaine</label>
+                  <label for="validationCustom02" class="form-label">Número de sessões por semana</label>
                   <input type="number" class="form-control" id="validationCustom02" [(ngModel)]="sport.nmbr_max_seance_semaine" name="nmbr_max_seance_semaine" required>
                 </div>
                 <div class="col-md-4 form-champ">
-                  <label for="validationCustom02" class="form-label">Prix</label>
+                  <label for="validationCustom02" class="form-label">Preço</label>
                   <input type="number" class="form-control" id="validationCustom02" [(ngModel)]="sport.prix" name="prix" required>
                 </div>
-                  <button type="submit" class="btn btn-success" >Enregistrer</button>   
+                  <button type="submit" class="btn btn-success" >Guardar</button>   
               </form>
         </div>
         <div *ngIf="message" class="alert alert-success" role="alert">{{message}}</div>

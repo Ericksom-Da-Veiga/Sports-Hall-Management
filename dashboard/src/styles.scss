@@ -389,3 +389,5 @@ body {
 .conteneur.active .basculer-droit{
     transform: translateX(200%);
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

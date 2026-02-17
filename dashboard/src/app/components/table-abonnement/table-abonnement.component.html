@@ -1,27 +1,27 @@
 <div class="table-data">
     <div class="card">
         <div class="card-header">
-          <h2>Liste des abonnements
-            <a routerLink="/abonnement/add" class="btn btn-success float-end">Ajouter</a>
+          <h2>Lista de assinaturas
+            <a routerLink="/abonnement/add" class="btn btn-success float-end">Adicionar</a>
           </h2>
-          <input class="form-control me-2" [(ngModel)]="data"  name="data" type="search" placeholder="Saisir le CIN ou nom" (input)="chercherAbonnement()">
+          <input class="form-control me-2" [(ngModel)]="data"  name="data" type="search" placeholder="Introduzir o NIF ou nome" (input)="chercherAbonnement()">
         </div>
         <div class="card-body">
-          <button type="button" class="btn btn-secondary float-end" (click)="exportToCSV()">Exporter en CSV</button>
+          <button type="button" class="btn btn-secondary float-end" (click)="exportToCSV()">Exportar para CSV</button>
           <div *ngIf="message" class="alert alert-success" role="alert">{{message}}</div>
           <table class="table table-borderehd">
             <thead>
                 <tr>
-                    <th>CIN Adherant</th>
-                    <th>Nom</th>
-                    <th>Prenom</th>
-                    <th>Type abonnement</th>
-                    <th>Prix</th>
-                    <th>Date debut</th>
-                    <th>Date fin</th>
-                    <th>Sports</th>
-                    <th>Modifier</th>
-                    <th>Delete</th>
+                    <th>NIF Aderente</th>
+                    <th>Nome</th>
+                    <th>Apelido</th>
+                    <th>Tipo de assinatura</th>
+                    <th>Preço</th>
+                    <th>Data de início</th>
+                    <th>Data de fim</th>
+                    <th>Desportos</th>
+                    <th>Modificar</th>
+                    <th>Eliminar</th>
                 </tr>
               </thead>
               <tbody>
@@ -33,11 +33,11 @@
                   <td>{{abonnement.prix_totale}} MAD</td>
                   <td>{{abonnement.date_debut}}</td>
                   <td>{{abonnement.date_fin}}</td>
-                  <td><a routerLink="/abonnement/detail/{{abonnement.id}}" class="btn btn-success">Voir les sports</a></td>
+                  <td><a routerLink="/abonnement/detail/{{abonnement.id}}" class="btn btn-success">Ver desportos</a></td>
                   <td><a routerLink="/abonnement/{{abonnement.id}}/edit" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a></td>
                   <td>
                     <button *ngIf="abonnement.active === 1" (click)="deleteAbonnement($event, abonnement.id)" class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button>
-                    <button *ngIf="abonnement.active === 0" (click)="activerAbonnement($event, abonnement.id)" class="btn btn-success">Activer</button>
+                    <button *ngIf="abonnement.active === 0" (click)="activerAbonnement($event, abonnement.id)" class="btn btn-success">Ativar</button>
                   </td>
                 </tr>
               </tbody>

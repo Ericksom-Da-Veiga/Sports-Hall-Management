@@ -2,28 +2,28 @@
   <div class="card">
       <div class="card-header">
         <h2>
-            Liste des coachs
-          <a routerLink="/monitor/add" type="button" class="btn btn-success float-end">Ajouter</a>
+            Lista de treinadores
+          <a routerLink="/monitor/add" type="button" class="btn btn-success float-end">Adicionar</a>
         </h2>
-        <input class="form-control me-2" [(ngModel)]="data" name="data" type="search" placeholder="Saisir le CIN ou nom" (input)="chercherCoach()">
+        <input class="form-control me-2" [(ngModel)]="data" name="data" type="search" placeholder="Introduzir o NIF ou nome" (input)="chercherCoach()">
       </div>
       <div class="card-body">
-        <button type="button" class="btn btn-secondary float-end" (click)="exportToCSV()">Exporter en CSV</button>
+        <button type="button" class="btn btn-secondary float-end" (click)="exportToCSV()">Exportar para CSV</button>
 
         <div *ngIf="message" class="alert alert-success" role="alert">{{message}}</div>
         <table class="table table-pane">
           <thead>
               <tr>
-                  <th>CIN</th>
-                  <th>Nom</th>
-                  <th>Prenom</th>
-                  <th>adress</th>
-                  <th>Telephone</th>
-                  <th>Mail</th>
-                  <th>Date Entree</th>
-                  <th>Cours</th>
-                  <th>Modifier</th>
-                  <th>Delete</th>
+                  <th>NIF</th>
+                  <th>Nome</th>
+                  <th>Apelido</th>
+                  <th>Endereço</th>
+                  <th>Telefone</th>
+                  <th>Email</th>
+                  <th>Data Entrada</th>
+                  <th>Aula</th>
+                  <th>Modificar</th>
+                  <th>Eliminar</th>
               </tr>
             </thead>
             <tbody>

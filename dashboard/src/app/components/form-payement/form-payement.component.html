@@ -1,9 +1,9 @@
 <div class="formulaire">
   <div *ngIf="erreur" class="alert alert-danger" role="alert">{{erreur}}</div>
-    <h3>Enregistrer un nouveau paiement</h3>
+    <h3>Guardar um novo pagamento</h3>
     <form class="row g-3 needs-validation" novalidate (ngSubmit)="SavePayement()">
       <div class="mb form-champ">
-        <label for="validationCustom01" class="form-label">CIN adherant</label>
+        <label for="validationCustom01" class="form-label">NIF do aderente</label>
         <input type="text" class="form-control" id="validationCustom01" max="12" [(ngModel)]="cin" name="cin" value="" required (input)="chercherAbonnemnt()">
       </div>
       <div class="mb form-champ">
@@ -11,18 +11,18 @@
         <input type="text" [(ngModel)]="nom" name="nom" class="form-control" disabled id="validationCustom05" required>
       </div>
       <div class="mb form-champ">
-        <label for="validationCustom05" class="form-label">Total(MAD)</label>
+        <label for="validationCustom05" class="form-label">Total(EUR)</label>
         <input type="number" [(ngModel)]="prix" name="prix" class="form-control" disabled id="validationCustom05" required>
       </div>
       <div class="mb form-champ">
-        <label for="validationCustom03" class="form-label">Espece reçu</label>
+        <label for="validationCustom03" class="form-label">Dinheiro recebido</label>
         <input type="number" [(ngModel)]="recu" name="recu" class="form-control" id="validationCustom03" required (input)="CalculerRendu()">
         </div>
       <div class="mb form-champ">
         <label for="validationCustom03" class="form-label">Rendu</label>
         <input  type="number" [(ngModel)]="rendu" name="rendu" class="form-control" disabled id="validationCustom03" required>
         </div>
-        <button type="submit" class="btn btn-primary" >Enregistrer</button>
+        <button type="submit" class="btn btn-primary" >Guardar</button>
         <div *ngIf="message" class="alert alert-success" role="alert">{{message}}</div>
       </form>
   </div>

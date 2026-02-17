@@ -1,1 +1,2 @@
-com/example/backend/BackendApplicationTests.class
+com/salle/sport/BackendApplicationTests.class
+com/salle/sport/repository/UsersRepositoryTest.class

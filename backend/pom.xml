@@ -13,9 +13,9 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>backend</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>backend</name>
-	<description>Back pour un systeme de gestion d esalle de sports</description>
+	<description>Backend pour un systeme de gestion de salle de sports</description>
 	<properties>
 		<java.version>21</java.version>
 	</properties>
@@ -72,6 +72,11 @@
 			<artifactId>java-jwt</artifactId>
 			<version>4.4.0</version>
 		</dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
 	</dependencies>
 
 	<build>

@@ -1,62 +1,67 @@
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/BackendApplication.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/controllers/AbonnementController.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/controllers/Abonnements_SportsController.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/controllers/AdherantController.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/controllers/AuthenticationController.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/controllers/CoachController.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/controllers/DashboardController.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/controllers/PayementController.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/controllers/SportsController.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/controllers/UserController.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/dto/abonnement/DTO_get_abonnement.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/dto/abonnement/DTO_post_abonnement.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/dto/abonnement/DTO_put_abonnement.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/dto/abonnement_sports/DTO_get_abonnement_sports.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/dto/abonnement_sports/DTO_post_abonnement_sports.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/dto/abonnement_sports/DTO_put_abonnement_sports.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/dto/adherants/DTO_list_adherant.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/dto/adherants/DTO_post_adherant.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/dto/adherants/DTO_put_adherant.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/dto/coach/DTO_list_coach.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/dto/coach/DTO_post_coach.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/dto/coach/DTO_put_coach.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/dto/dashboard/DTO_get_list_Dashboard.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/dto/dashboard/DTO_get_numbers.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/dto/login/DTO_post_login.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/dto/payement/DTO_get_payements.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/dto/payement/DTO_post_payements.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/dto/payement/DTO_put_payement.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/dto/sports/DTO_get_sports.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/dto/sports/DTO_post_sports.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/dto/sports/DTO_put_sports.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/dto/user/DTO_get_user.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/dto/user/DTO_post_user.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/dto/user/DTO_put_user.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/entites/Abonnement.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/entites/Abonnement_sports.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/entites/Adherant.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/entites/Coach.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/entites/Payement.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/entites/Sports.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/entites/User.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/infra/GlobalExceptionHandler.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/infra/Response.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/infra/SecurityConfiguration.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/infra/SecurityFilter.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/repository/AbonnementRepository.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/repository/Abonnement_SportsRepository.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/repository/AdherantRepository.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/repository/CoachRepository.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/repository/PayementRepository.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/repository/SportsRepository.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/repository/UserRepository.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/services/AbonnementService.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/services/Abonnement_SportsService.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/services/AdherantService.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/services/AuthenticationService.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/services/CoachService.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/services/DashboardService.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/services/PayementService.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/services/SportService.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/services/TokenService.java
-/home/erickson/Projetos/Estagio-Premiere-Systeme/salle-sport/backend/src/main/java/com/example/backend/services/UserService.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/BackendApplication.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/controllers/AbonnementController.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/controllers/Abonnements_SportsController.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/controllers/AdherantController.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/controllers/AuthenticationController.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/controllers/CoachController.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/controllers/DashboardController.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/controllers/MessageController.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/controllers/PayementController.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/controllers/SportsController.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/controllers/UserController.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/dto/abonnement/DTO_get_abonnement.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/dto/abonnement/DTO_post_abonnement.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/dto/abonnement/DTO_put_abonnement.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/dto/abonnement_sports/DTO_get_abonnement_sports.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/dto/abonnement_sports/DTO_post_abonnement_sports.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/dto/abonnement_sports/DTO_put_abonnement_sports.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/dto/adherants/DTO_list_adherant.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/dto/adherants/DTO_post_adherant.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/dto/adherants/DTO_put_adherant.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/dto/coach/DTO_list_coach.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/dto/coach/DTO_post_coach.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/dto/coach/DTO_put_coach.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/dto/dashboard/DTO_get_list_Dashboard.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/dto/dashboard/DTO_get_numbers.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/dto/login/DTO_post_login.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/dto/payement/DTO_get_payements.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/dto/payement/DTO_post_payements.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/dto/payement/DTO_put_payement.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/dto/sports/DTO_get_sports.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/dto/sports/DTO_post_sports.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/dto/sports/DTO_put_sports.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/dto/user/DTO_get_user.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/dto/user/DTO_post_user.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/dto/user/DTO_put_user.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/entites/Abonnement.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/entites/Abonnement_sports.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/entites/Adherant.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/entites/Coach.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/entites/Messages.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/entites/Payement.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/entites/Sports.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/entites/Users.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/infra/GlobalExceptionHandler.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/infra/Response.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/infra/SecurityConfiguration.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/infra/SecurityFilter.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/outils/Enum/MessageStatus.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/repository/AbonnementRepository.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/repository/Abonnement_SportsRepository.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/repository/AdherantRepository.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/repository/CoachRepository.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/repository/MessageRepository.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/repository/PayementRepository.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/repository/SportsRepository.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/repository/UserRepository.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/services/AbonnementService.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/services/Abonnement_SportsService.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/services/AdherantService.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/services/AuthenticationService.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/services/CoachService.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/services/DashboardService.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/services/MessageService.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/services/PayementService.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/services/SportService.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/services/TokenService.java
+/home/erickson/Projetos/Estagio Premiere Systeme/Sports-Hall-Management/backend/src/main/java/com/salle/sport/services/UserService.java

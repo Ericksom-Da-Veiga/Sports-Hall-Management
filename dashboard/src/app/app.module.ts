@@ -55,6 +55,7 @@ import { SettingsEditComponent } from './view/settings-edit/settings-edit.compon
 import { SettingsAddComponent } from './view/settings-add/settings-add.component';
 import { EditSettingsComponent } from './components/edit-settings/edit-settings.component';
 import { FormSettingsComponent } from './components/form-settings/form-settings.component';
+import { ChatComponent } from './components/chat/chat/chat.component';
 
 
 @NgModule({
@@ -105,7 +106,8 @@ import { FormSettingsComponent } from './components/form-settings/form-settings.
     SettingsEditComponent,
     SettingsAddComponent,
     EditSettingsComponent,
-    FormSettingsComponent
+    FormSettingsComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

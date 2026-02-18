@@ -20,7 +20,20 @@ export class AuthGardService implements CanActivate {
       const requiredRole = next.data['role'];
       
       if (requiredRole && tokenPayload.role !== requiredRole) {
-        this.router.navigate(['/dashboard']); // Redirecionar se o usuário não tiver o papel necessário
+        // special case: user editing their own profile should be permitted
+        const idParam = next.params ? next.params['id'] : null;
+        if (requiredRole === 'Admin' && idParam != null) {
+          const tokenId = tokenPayload.id ?? tokenPayload.sub ?? null;
+          if (tokenId != null && String(tokenId) === String(idParam)) {
+            return true; // allow self-edit
+          }
+        }
+        // redirect non‑admins requesting admin-area to configuration page
+        if (requiredRole === 'Admin') {
+          this.router.navigate(['/configuracao']);
+        } else {
+          this.router.navigate(['/dashboard']); // generic redirect
+        }
         return false;
       }
       return true;

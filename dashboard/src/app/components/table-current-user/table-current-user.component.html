@@ -2,14 +2,10 @@
   <div class="card">
       <div class="card-header">
         <h2>
-            Lista de Utilizadores
-            <a *ngIf="showAdd" routerLink="/users/add" class="btn btn-success float-end">Adicionar</a>
+            Meu Perfil
         </h2> 
-          <input class="form-control me-2" [(ngModel)]="data" name="data" type="search" placeholder="Introduzir o NIF, email ou nome" (input)="chercherUser()">
       </div>
       <div class="card-body">
-        <button type="button" class="btn btn-secondary float-end" (click)="exportToCSV()" >Exportar para CSV</button>
-
         <div *ngIf="message" class="alert alert-success" role="alert">{{message}}</div>
         <table class="table table-pane">
           <thead>
@@ -22,7 +18,6 @@
                   <th>Telefone</th>
                   <th>Role</th>
                   <th>Modificar</th>
-                  <th>Ação</th>
               </tr>
             </thead>
             <tbody>
@@ -34,14 +29,10 @@
                   <td>{{user.mail}}</td>
                   <td>{{user.telephone}}</td>
                   <td>{{user.role}}</td>
-                  <td><a routerLink="/users/{{user.id}}/edit" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                  <td>
-                    <button (click)="deleteUser($event, user.id)" class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button>
-                  </td>
+                  <td><a [routerLink]="['/users', user.id, 'edit']" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a></td>
               </tr>
             </tbody>
         </table>
-        <pagination-controls (pageChange)="onPageChange($event)" class="pagination"></pagination-controls>
       </div>
   </div>
 </div>

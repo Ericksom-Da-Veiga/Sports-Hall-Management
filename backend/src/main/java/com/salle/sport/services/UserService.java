@@ -102,6 +102,7 @@ public class UserService {
         try {
             Users user = repository.getReferenceById(data.id());
             user.UpdatInfo(data);
+            repository.save(user);
 
             List<DTO_get_user> users = new ArrayList<>();
             users.add(new DTO_get_user(user));

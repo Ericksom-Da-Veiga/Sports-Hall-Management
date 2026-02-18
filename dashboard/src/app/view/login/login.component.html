@@ -3,18 +3,18 @@
         <div class="forme-conteneur se-connecter">
             <form (ngSubmit)="Login()">
                 <div *ngIf="error" class="alert alert-danger" id="error" role="alert"><p>{{error}}</p></div>
-                <h1>Se connecter</h1>
-                <span>avec votre email et password</span>
+                <h1>Se conectar</h1>
+                <span>Com email e senha</span>
                 <input type="email" [(ngModel)]="mail" name="mail" placeholder="Email">
-                <input type="password" [(ngModel)]="password" name="password" placeholder="Mot de passe">
-                <button routerLink="">Se Connecter</button> 
+                <input type="password" [(ngModel)]="password" name="password" placeholder="Senha">
+                <button routerLink="">Login</button> 
             </form>
         </div>
         <div class="conteneur-droit">
             <div class="panneau">
                 <div class="panneau-droit contenue">
-                    <h1>Bienvenue!</h1>
-                    <p>Entrez vos informations personnelles pour utiliser toutes les fonctionnalités du site</p>
+                    <h1>Bem-vindo!</h1>
+                    <p>Entre com suas informações pessoais para usar todas as funcionalidades do site</p>
                 </div>
             </div>
         </div>

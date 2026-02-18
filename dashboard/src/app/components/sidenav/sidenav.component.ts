@@ -28,7 +28,24 @@ export class SidenavComponent implements OnInit{
         this.List = this.List.filter(item => item.name !== 'Paramètres');
       }
 
-      //verifier si il y a un item sauvegardé dans le sessionstotage
+      // replace users item for non-admins with configuration link
+      if (this.role !== 'Admin') {
+        this.List = this.List.map(item => {
+          if (item.routerLink === '/users') {
+            return {
+              ...item,
+              name: 'Configuração',
+              routerLink: '/configuracao'
+            };
+          }
+          return item;
+        });
+
+        // also remove dashboard and sports links entirely
+        this.List = this.List.filter(item => item.routerLink !== '/dashboard' && item.routerLink !== '/sports');
+      }
+
+      //verifier si il y a um item sauvegardé dans le sessionstotage
       const activeLinkId = localStorage.getItem('activeLinkId');
       if (activeLinkId && this.List) {
         const found = this.List.find(item => item.id === parseInt(activeLinkId));
@@ -37,7 +54,6 @@ export class SidenavComponent implements OnInit{
         }
       }
     });
- 
   }
   activeItem: any;
 

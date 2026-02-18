@@ -1,10 +1,12 @@
-<ul class="box-info">
-    <li>
-        <i ngClass = {{myclass}}></i>
-        <span class="text">
-          <h3>{{titleh3}}</h3>
-          <p>{{text}}</p>
-        </span>
-    </li>
-  </ul>
+<ng-container *ngIf="isAdmin">
+  <ul class="box-info">
+      <li>
+          <i ngClass = {{myclass}}></i>
+          <span class="text">
+            <h3>{{titleh3}}</h3>
+            <p>{{text}}</p>
+          </span>
+      </li>
+    </ul>
+</ng-container>
   

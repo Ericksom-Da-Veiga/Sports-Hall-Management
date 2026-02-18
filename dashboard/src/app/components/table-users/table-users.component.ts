@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserResponse, UserService } from 'src/app/services/user/user.service';
 
@@ -8,7 +8,9 @@ import { UserResponse, UserService } from 'src/app/services/user/user.service';
   templateUrl: './table-users.component.html',
   styleUrls: ['./table-users.component.scss']
 })
+
 export class TableUsersComponent implements OnInit{
+  @Input() showAdd: boolean = true;
 
   Users!: UserResponse[];
   data!: string;

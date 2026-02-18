@@ -27,10 +27,12 @@ import { SettingsEditComponent } from './view/settings-edit/settings-edit.compon
 import { UsersComponent } from './view/users/users.component';
 import { UsersAddComponent } from './view/users-add/users-add.component';
 import { UsersEditComponent } from './view/users-edit/users-edit.component';
+import { TableCurrentUserComponent } from './components/table-current-user/table-current-user.component';
+import { ConfiguracaoComponent } from './view/configuracao/configuracao.component';
 
 const routes: Routes = [
-  {path: "dashboard", component: DashboardComponent, title: "Dashboard", canActivate: [AuthGardService]},
-  {path: "", component: DashboardComponent, title: "Dashboard", canActivate: [AuthGardService]},
+  {path: "dashboard", component: DashboardComponent, title: "Dashboard", canActivate: [AuthGardService], data: { role: 'Admin' }},
+  {path: "", component: DashboardComponent, title: "Dashboard", canActivate: [AuthGardService], data: { role: 'Admin' }},
 
   {path: "adherant", component: AdherantComponent,title: "Adherant", canActivate: [AuthGardService]},
   {path: "adherant/:id/edit", component: AdherantEditComponent, title:"Edit adherant", canActivate: [AuthGardService]},
@@ -45,7 +47,7 @@ const routes: Routes = [
   {path: "abonnement/add", component: AbonnementAddComponent,title: "Ajouter Abonnement", canActivate: [AuthGardService] },
   {path: "abonnement/detail/:id", component: AbonnementDetailComponent, title: "Detail Abonnement", canActivate: [AuthGardService]},
   
-  {path: "sports", component: SportComponent,title: "Sports", canActivate: [AuthGardService]},
+  {path: "sports", component: SportComponent,title: "Sports", canActivate: [AuthGardService], data: { role: 'Admin' }},
   {path: "sports/:id/edit", component: SportEditComponent, title:"Edit Sports", canActivate: [AuthGardService]},
   {path: "sports/add", component: SportAddComponent,title: "Ajouter Sports", canActivate: [AuthGardService] },
 
@@ -53,9 +55,12 @@ const routes: Routes = [
   {path: "monitor/add", component: MonitorsAddsComponent,title: "Ajouter Monitor", canActivate: [AuthGardService]},
   {path: "monitor/:id/edit", component: MonitorsEditComponent,title: "Edit Monitor", canActivate: [AuthGardService]},
 
-  {path: "users", component: UsersComponent, title: "Utilizadores", canActivate: [AuthGardService]},
-  {path: "users/add", component: UsersAddComponent, title: "Adicionar Utilizador", canActivate: [AuthGardService]},
-  {path: "users/:id/edit", component: UsersEditComponent, title: "Modificar Utilizador", canActivate: [AuthGardService]},
+  {path: "users", component: UsersComponent, title: "Utilizadores", canActivate: [AuthGardService], data: { role: 'Admin' }},
+  {path: "users/add", component: UsersAddComponent, title: "Adicionar Utilizador", canActivate: [AuthGardService], data: { role: 'Admin' }},
+  {path: "users/:id/edit", component: UsersEditComponent, title: "Modificar Utilizador", canActivate: [AuthGardService], /* still guarded but self-edit allowed */},
+
+  // configuration page for non‑admins
+  {path: "configuracao", component: ConfiguracaoComponent, title: "Configuração", canActivate: [AuthGardService]},
 
   {path: "statistique", component: StatistiquesComponent, title: "Statistiques", canActivate: [AuthGardService]},
   {path: "login", component: LoginComponent,title: "Login"},

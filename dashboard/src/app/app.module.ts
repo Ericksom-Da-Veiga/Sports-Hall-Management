@@ -62,8 +62,10 @@ import { ChatComponent } from './components/chat/chat.component';
 import { UsersComponent } from './view/users/users.component';
 import { UsersAddComponent } from './view/users-add/users-add.component';
 import { UsersEditComponent } from './view/users-edit/users-edit.component';
+import { ConfiguracaoComponent } from './view/configuracao/configuracao.component';
 import { FormUsersComponent } from './components/form-users/form-users.component';
 import { EditUsersComponent } from './components/edit-users/edit-users.component';
+import { TableCurrentUserComponent } from './components/table-current-user/table-current-user.component';
 
 
 @NgModule({
@@ -111,6 +113,7 @@ import { EditUsersComponent } from './components/edit-users/edit-users.component
     AbonnementInformationsComponent,
     TableAdminComponent,
     TableUsersComponent,
+    TableCurrentUserComponent,
     SettingsEditComponent,
     SettingsAddComponent,
     EditSettingsComponent,
@@ -119,6 +122,7 @@ import { EditUsersComponent } from './components/edit-users/edit-users.component
     UsersComponent,
     UsersAddComponent,
     UsersEditComponent,
+    ConfiguracaoComponent,
     FormUsersComponent,
     EditUsersComponent
   ],

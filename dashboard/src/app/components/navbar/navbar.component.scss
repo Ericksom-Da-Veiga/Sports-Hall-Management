@@ -96,7 +96,21 @@ nav .profile img {
 	object-fit: cover;
 	border-radius: 50%;
 }
-nav .switch-mode {
+
+/* added user icon/name */
+nav .profile {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	color: var(--dark);
+}
+nav .profile i {
+	font-size: 24px;
+}
+nav .profile .user-name {
+	font-size: 14px;
+	white-space: nowrap;
+}nav .switch-mode {
 	display: block;
 	min-width: 50px;
 	height: 25px;

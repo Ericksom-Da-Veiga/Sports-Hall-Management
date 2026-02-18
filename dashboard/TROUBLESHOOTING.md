@@ -180,7 +180,97 @@ ngOnInit() {
 
 ---
 
-### 6. LocalStorage não tem token
+### 6. Erro 500 ao enviar mensagem com REST
+
+**Sintoma relacionado**: histórico não aparece e/ou a lista de utilizadores omite o admin,
+as mensagens são gravadas mas o destinatário não as vê.
+
+**Diagnóstico**: o componente inicializava `myUserId` com o valor `1` por omissão. quando
+um token JWT só continha um endereço de e‑mail (por exemplo no `sub`), a conversão para
+número falhava e o valor do administrador era mantido. O filtro na lista de utilizadores
+excluía indevidamente o admin, e todas as requisições de conversa utilizavam `senderId`
+= 1 em vez do ID real do remetente. Consequentemente o histórico devolvido não correspondia
+ao par de identificadores correto e os tópicos WebSocket não coincidiam, portanto o
+recetor não via as novas mensagens.
+
+**Solução**: remover o valor por omissão e calcular `myUserId` só após `GET /user` ter
+retornado os utilizadores disponíveis. A ordem de verificação é:
+
+1. extrair um número directamente de qualquer claim do token (`id`, `sub`, etc) e convertê‑lo
+   com `Number()`;
+2. se não houver número, extrair o e‑mail do token (claims comuns: `mail`, `email`,
+   `sub`, `username`, `preferred_username`) e procurar o utilizador correspondente no
+   array obtido a partir da API;
+3. se ainda não conseguir determinar o id, deixar‑o `null` e não filtrar a lista (aparece
+   o admin) e gerar um aviso no console. o chat passa a mostrar um erro caso se tente
+   carregar conversa sem ID conhecido.
+
+Esse comportamento já está implementado no `ChatComponent.loadUsers()` e
+`loadConversation()`, portanto o problema do utilizador desaparece e a lista de
+utilizadores não exclui o admin quando se está logado com outro user.
+
+```ts
+// exemplo resumido do novo código
+myUserId: number | null = null;
+
+loadUsers() {
+  const tokenUser: any = this.authService.getUserFromToken();
+  // ...calcular tokenNumericId e tokenEmail seguindo os passos acima...
+
+  if (tokenNumericId != null) {
+    this.myUserId = tokenNumericId;
+  } else if (tokenEmail) {
+    const me = allUsers.find(u => u.mail === tokenEmail);
+    if (me) {
+      this.myUserId = me.id;
+      this.myUserName = `${me.nom} ${me.prenom}`;
+    }
+  }
+
+  if (this.myUserId == null) {
+    console.warn('ID do utilizador desconhecido; lista não será filtrada');
+  }
+
+  this.users = this.myUserId != null ? allUsers.filter(u => u.id !== this.myUserId) : allUsers;
+}
+```
+
+---
+
+
+---
+
+### 7. LocalStorage não tem token
+
+**Sintoma**: `Http failure response for http://localhost:8080/messages: 500 OK` com corpo contendo
+```
+JSON parse error: Cannot deserialize value of type `java.lang.Long` from String "admin@admin.com"
+```
+
+**Causa**: o frontend estava passando um identificador de utilizador (`senderId`/`receiverId`) como string
+(provavelmente extraído de `sub` do token JWT que contém o email) em vez de um número. O backend
+espera um `Long` e falha ao desserializar.
+
+**Solução**: garantir que `myUserId` e `selectedUserId` sejam números antes de montar o payload;
+converter explicitamente valores vindos do token.
+
+```ts
+const rawId = user.id ?? user.sub;
+this.myUserId = Number(rawId) || 1; // tratar NaN
+```
+
+ou transformar na hora de enviar via REST:
+```ts
+this.messagesService.sendMessageRest({
+  senderId: Number(this.myUserId),
+  receiverId: Number(this.selectedUserId),
+  ...
+});
+```
+
+---
+
+### 7. LocalStorage não tem token
 
 **Sintoma**: Erro ao conectar: "Token não disponível"
 

@@ -162,6 +162,7 @@ export class MessagesService {
       return;
     }
 
+    console.debug('publicando mensagem via WebSocket:', message);
     this.stompClient.publish({
       destination: '/app/chat',
       body: JSON.stringify(message)

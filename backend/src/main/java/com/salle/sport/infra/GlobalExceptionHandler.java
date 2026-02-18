@@ -12,10 +12,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
+    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(GlobalExceptionHandler.class);
+
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     public Response<Object> handleValidationExceptions(MethodArgumentNotValidException ex) {
+        logger.error("Validation error: {}", ex.getMessage(), ex);
         Response<Object> response = new Response<>();
         response.error(ex.getMessage(), "KO");
         return response;
@@ -25,6 +29,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ResponseBody
     public Response<Object> handleAllExceptions(Exception ex) {
+        logger.error("Unhandled exception caught by GlobalExceptionHandler", ex);
         Response<Object> response = new Response<>();
         response.exception(ex.getMessage(), "KO");
         return response;

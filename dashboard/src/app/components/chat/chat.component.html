@@ -5,7 +5,9 @@
       <h2>Mensagens</h2>
       <div class="connection-status" [class.connected]="isConnected" [class.disconnected]="!isConnected">
         <span class="status-dot"></span>
-        <span class="status-text">{{ isConnected ? 'Conectado' : 'Desconectado' }}</span>
+        <span class="status-text" [title]="isConnected ? 'WebSocket ativo' : 'Desconectado – mensagens irão por HTTP'">
+          {{ isConnected ? 'Conectado' : 'Desconectado (HTTP)' }}
+        </span>
       </div>
     </div>
     <div class="user-selector">

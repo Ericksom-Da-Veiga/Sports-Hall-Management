@@ -17,7 +17,9 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
   users: UserResponse[] = [];
   selectedUserId: number | null = null;
   selectedUserName: string = '';
-  myUserId: number = 1;
+  // ID do utilizador autenticado.  Inicialmente `null` até sabermos
+  // com certeza quem é, porque o JWT pode não conter um número.
+  myUserId: number | null = null;
   myUserName: string = 'Eu';
 
   newMessage: string = '';
@@ -112,7 +114,59 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
   loadUsers(): void {
     this.userService.getUsers().subscribe({
       next: (res: any) => {
-        this.users = res.data.filter((u: UserResponse) => u.id !== this.myUserId);
+        const allUsers: UserResponse[] = res.data;
+
+        // decode token once; may be null or contain strings
+        const tokenUser: any = this.authService.getUserFromToken();
+        let tokenEmail: string | null = null;
+        let tokenNumericId: number | null = null;
+
+        if (tokenUser) {
+          // preferentially use numeric id claim if present
+          const rawId = tokenUser.id ?? tokenUser.sub ?? null;
+          if (rawId != null) {
+            const parsed = Number(rawId);
+            if (!isNaN(parsed)) {
+              tokenNumericId = parsed;
+            }
+          }
+
+          // tokens vary; try several common claim names for the user’s email
+          tokenEmail =
+            typeof tokenUser.mail === 'string' ? tokenUser.mail :
+            typeof tokenUser.email === 'string' ? tokenUser.email :
+            typeof tokenUser.sub === 'string' ? tokenUser.sub :
+            typeof tokenUser.username === 'string' ? tokenUser.username :
+            typeof tokenUser.preferred_username === 'string' ? tokenUser.preferred_username :
+            null;
+
+          if (tokenUser.name) {
+            this.myUserName = tokenUser.name;
+          }
+        }
+
+        // determine myUserId using whatever information we have
+        if (tokenNumericId != null) {
+          this.myUserId = tokenNumericId;
+        } else if (tokenEmail) {
+          const lower = tokenEmail.toLowerCase();
+          const me = allUsers.find(u => u.mail.toLowerCase() === lower);
+          if (me) {
+            this.myUserId = me.id;
+            this.myUserName = `${me.nom} ${me.prenom}`;
+          }
+        }
+
+        if (this.myUserId == null) {
+          console.warn('Não foi possível determinar ID do utilizador a partir do token. ' +
+                       'A lista não será filtrada e o histórico poderá estar incorreto.');
+        }
+
+        // filter out self if known
+        this.users = this.myUserId != null ?
+          allUsers.filter(u => u.id !== this.myUserId) :
+          allUsers.slice();
+
         if (this.users.length > 0) {
           this.selectedUserId = this.users[0].id;
           this.selectedUserName = `${this.users[0].nom} ${this.users[0].prenom}`;
@@ -124,13 +178,6 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
         console.error('Erro ao carregar utilizadores:', err);
       }
     });
-
-    // Obtém ID do utilizador logado do token
-    const user = this.authService.getUserFromToken();
-    if (user) {
-      this.myUserId = user.sub || user.id || 1;
-      this.myUserName = user.name || 'Eu';
-    }
   }
 
   /**
@@ -154,6 +201,12 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
    */
   loadConversation(): void {
     if (!this.selectedUserId) return;
+    if (this.myUserId == null) {
+      console.error('ID do usuário desconhecido, não é possível carregar conversa');
+      return;
+    }
+
+    console.debug('loadConversation para', { myUserId: this.myUserId, other: this.selectedUserId });
 
     this.isLoading = true;
     
@@ -169,7 +222,7 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
         this.scrollToBottom = true;
 
         // Subscreve ao tópico de conversa para receber mensagens em tempo real
-        if (this.isConnected && this.selectedUserId) {
+        if (this.isConnected && this.selectedUserId && this.myUserId != null) {
           this.messagesService.subscribeToConversation(this.myUserId, this.selectedUserId);
         }
 
@@ -204,6 +257,11 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
    */
   sendMessage(): void {
     if (!this.newMessage.trim() || !this.selectedUserId) return;
+    if (this.myUserId == null) {
+      console.error('Tentativa de enviar mensagem sem ID de usuário definido');
+      this.errorMessage = 'Erro interno: usuário desconhecido';
+      return;
+    }
 
     if (!this.isConnected) {
       this.errorMessage = 'Desconectado. Enviando via HTTP...';
@@ -212,12 +270,13 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
     }
 
     const messagePayload: ConversationTopicDTO = {
-      senderId: this.myUserId,
+      senderId: this.myUserId!, // guarded above
       receiverId: this.selectedUserId,
       content: this.newMessage.trim()
     };
 
     try {
+      console.log('enviando mensagem via WebSocket', messagePayload);
       this.messagesService.sendMessageWebSocket(messagePayload);
       this.newMessage = '';
       this.errorMessage = '';
@@ -234,8 +293,10 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
     if (!this.selectedUserId) return;
 
     const msg: Message = {
-      senderId: this.myUserId,
-      receiverId: this.selectedUserId,
+      // make extra sure we are sending numbers; the template types are
+      // numeric but the values may have been set from untyped sources
+      senderId: Number(this.myUserId),
+      receiverId: Number(this.selectedUserId),
       content: this.newMessage.trim(),
       senderName: this.myUserName
     };

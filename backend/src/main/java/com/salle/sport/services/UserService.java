@@ -24,6 +24,8 @@ public class UserService {
         Response<DTO_get_user> response = new Response<>();
         try {
             List<DTO_get_user> users = repository.findAll().stream().map(DTO_get_user::new).toList();
+            // debug logging to verify if admin appears
+            users.forEach(u -> System.out.println("USER LIST ITEM: " + u.mail() + " role=" + u.role()));
             response.success("success", "OK", users);
         } catch (Exception e) {
             response.exception(e.getMessage(), "KO");

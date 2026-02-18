@@ -14,7 +14,10 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         // ponto de entrada para o cliente abrir o socket
         registry.addEndpoint("/ws")
-                .setAllowedOrigins("*")
+                // when credentials (cookies, headers) are allowed you can’t use the
+                // special value "*" on allowedOrigins; the server rejects it during
+                // handler mapping. use patterns instead or list hosts explicitly.
+                .setAllowedOriginPatterns("*")
                 .withSockJS();
     }
 

@@ -49,6 +49,7 @@ public class MessageController {
         // recuperar user logado do SecurityContext
         Users logged = (Users) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Long loggedId = logged.getId();
+        System.out.println("Fetching conversation between " + loggedId + " and " + otherUserId);
 
         // utiliza método especializado que já marca mensagens lidas
         return messageService.getConversationAndMarkRead(loggedId, otherUserId);
